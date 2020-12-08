@@ -3,7 +3,7 @@
 ### [Project Page](http://zak.murez.com/atlas) | [Paper](https://arxiv.org/abs/2003.10432) | [Video](https://youtu.be/9NOPcOGV6nU) | [Models](https://drive.google.com/file/d/12P29x6revvNWREdZ01ufJwMFPl-FEI_V/view?usp=sharing) | [Sample Data](https://drive.google.com/file/d/13-D7QNVZjj864E768zJ7IWDDqY6agUES/view?usp=sharing)
 
 [Zak Murez](http://zak.murez.com), 
-Tarrence van As,
+[Tarrence van As](https://github.com/tarrencev),
 [James Bartolozzi](http://jhb.graphics),
 Ayan Sinha,
 Vijay Badrinarayanan, and 
@@ -68,6 +68,7 @@ python prepare_data.py --path DATAROOT --path_meta METAROOT --dataset sample
 
 #### Scannet
 Download and extract Scannet by following the instructions provided at http://www.scan-net.org/.
+You also need to download the train/val/test splits and the label mapping from https://github.com/ScanNet/ScanNet (Benchmark Tasks).
 The directory structure should look like:
 ```
 DATAROOT
@@ -80,11 +81,15 @@ DATAROOT
 │   |       │   │   ...
 │   |       │   ...
 │   └───scans_test
-│           └───color
-│           │   │   0.jpg
-│           │   │   1.jpg
-│           │   │   ...
-│           │   ...
+│   |       └───color
+│   |       │   │   0.jpg
+│   |       │   │   1.jpg
+│   |       │   │   ...
+│   |       │   ...
+|   └───scannetv2-labels.combined.tsv
+|   └───scannetv2_test.txt
+|   └───scannetv2_train.txt
+|   └───scannetv2_val.txt
 ```
 Next run our data preperation script which parses the raw data format into our common json format (more info [here](atlas/datasets/README.md))
 (note that we store our derivered data in a seperate folder `METAROOT` to prevent pollution of the original data).
